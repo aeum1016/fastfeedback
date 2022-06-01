@@ -16,12 +16,11 @@ export default function Home() {
       <main className={styles.main}>
         <h1 className={styles.title}>Fast Feedback</h1>
         <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.js</code>
+          Current User: <code>{auth.user ? auth.user.email : 'NA'}</code>
         </p>
-        <button onClick={(e) => auth.signinWithGithub()}>Sign In</button>
-        <div>{auth?.user?.email}</div>
-        {auth?.user && (
+        {!auth.user ? (
+          <button onClick={(e) => auth.signinWithGithub()}>Sign In</button>
+        ) : (
           <button onClick={(e) => auth.signout()}>Sign Out</button>
         )}
       </main>
