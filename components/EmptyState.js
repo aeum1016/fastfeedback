@@ -4,23 +4,21 @@ import DashboardShell from './DashboardShell';
 import AddSiteModal from './AddSiteModal';
 
 const EmptyState = () => (
-  <DashboardShell>
-    <Flex
-      width="100%"
-      backgroundColor="white"
-      borderRadius="8px"
-      p={16}
-      justify="center"
-      alignItems="center"
-      flexDirection="column"
-    >
-      <Heading size="lg" mb={1}>
-        You haven&apos;t added any sites.
-      </Heading>
-      <Text mb={4}>Let&apos;s get started</Text>
-      <AddSiteModal />
-    </Flex>
-  </DashboardShell>
+  <Flex
+    width="100%"
+    backgroundColor="white"
+    borderRadius="8px"
+    p={16}
+    justify="center"
+    alignItems="center"
+    flexDirection="column"
+  >
+    <Heading size="lg" mb={1}>
+      You haven&apos;t added any sites.
+    </Heading>
+    <Text mb={4}>Let&apos;s get started</Text>
+    <AddSiteModal />
+  </Flex>
 );
 
 export default EmptyState;

@@ -39,18 +39,16 @@ const DashboardShell = ({ children }) => {
         </Stack>
         <Flex alignItems="center">
           <Link mr={4}>Account</Link>
-          <Avatar size="sm" src={auth.user.photoUrl} />
+          <Avatar size="sm" src={auth.user?.photoUrl} />
         </Flex>
       </Flex>
       <Flex backgroundColor="gray.100" p={8} height="100vh">
         <Flex
+          margin="0 auto"
           flexDirection="column"
-          maxWidth="800px"
+          maxWidth="1250px"
           width="100%"
-          justifyContent="flex-start"
-          alignItems="flex-start"
-          ml="auto"
-          mr="auto"
+          px={8}
         >
           <Breadcrumb>
             <BreadcrumbItem isCurrentPage>
@@ -58,9 +56,13 @@ const DashboardShell = ({ children }) => {
                 Sites
               </BreadcrumbLink>
             </BreadcrumbItem>
-            <BreadcrumbItem></BreadcrumbItem>
           </Breadcrumb>
-          <Heading mb={4}>Sites</Heading>
+          <Flex justifyContent="space-between">
+            <Heading mb={4}>My Sites</Heading>
+            <Button backgroundColor="gray.900" color="white">
+              + Add Site
+            </Button>
+          </Flex>
           {children}
         </Flex>
       </Flex>

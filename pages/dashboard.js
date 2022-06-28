@@ -4,13 +4,19 @@ import { ArrowRightIcon } from '@chakra-ui/icons';
 
 import { useAuth } from '../lib/auth';
 import EmptyState from '@/components/EmptyState';
+import SiteTableSkeleton from '@/components/SiteTableSkeleton';
+import DashboardShell from '@/components/DashboardShell';
 
 export default function Dashboard() {
   const auth = useAuth();
   return !auth.user ? (
-    'Loading...'
+    <DashboardShell>
+      <SiteTableSkeleton />
+    </DashboardShell>
   ) : (
-    <EmptyState />
+    <DashboardShell>
+      <EmptyState />
+    </DashboardShell>
     // <Button onClick={(e) => auth.signout()}>Sign Out</Button>
   );
 }
