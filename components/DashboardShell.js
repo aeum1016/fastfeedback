@@ -14,6 +14,7 @@ import {
 } from '@chakra-ui/react';
 import { ArrowRightIcon } from '@chakra-ui/icons';
 import { useAuth } from '@/lib/auth';
+import AddSiteModal from './AddSiteModal';
 
 const DashboardShell = ({ children }) => {
   const auth = useAuth();
@@ -59,9 +60,7 @@ const DashboardShell = ({ children }) => {
           </Breadcrumb>
           <Flex justifyContent="space-between">
             <Heading mb={4}>My Sites</Heading>
-            <Button backgroundColor="gray.900" color="white">
-              + Add Site
-            </Button>
+            <AddSiteModal>+ Add Site</AddSiteModal>
           </Flex>
           {children}
         </Flex>

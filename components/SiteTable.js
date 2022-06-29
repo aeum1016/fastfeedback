@@ -1,6 +1,8 @@
 import React from 'react';
-import { Box, Skeleton } from '@chakra-ui/react';
+import { Box, Skeleton, Link } from '@chakra-ui/react';
 import { Table, Tr, Th, Td } from './Table';
+import format from 'date-fns/format';
+import parseISO from 'date-fns/parseISO';
 
 const SkeletonRow = ({ width }) => (
   <Box as="tr">
@@ -19,7 +21,7 @@ const SkeletonRow = ({ width }) => (
   </Box>
 );
 
-const SiteTableSkeleton = () => {
+const SiteTable = ({ sites }) => {
   return (
     <Table>
       <thead>
@@ -32,14 +34,19 @@ const SiteTableSkeleton = () => {
         </Tr>
       </thead>
       <tbody>
-        <SkeletonRow width="75x" />
-        <SkeletonRow width="125px" />
-        <SkeletonRow width="50px" />
-        <SkeletonRow width="100px" />
-        <SkeletonRow width="75px" />
+        {sites.map((site) => (
+          <Box as="tr" key={site.id}>
+            <Td fontWeight="semibold">{site.name}</Td>
+            <Td>{site.url}</Td>
+            <Td>
+              <Link>View Feedback</Link>
+            </Td>
+            <Td>{format(parseISO(site.createdAt), 'PPpp')}</Td>
+          </Box>
+        ))}
       </tbody>
     </Table>
   );
 };
 
-export default SiteTableSkeleton;
+export default SiteTable;
