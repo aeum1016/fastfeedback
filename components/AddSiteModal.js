@@ -53,7 +53,7 @@ const AddSiteModal = ({ children }) => {
         onClick={onOpen}
         backgroundColor="gray.900"
         color="white"
-        fontWidht="semibold"
+        fontSize="semibold"
         _hover={{ bg: 'gray.700' }}
         _active={{
           bg: 'gray.800',
