@@ -29,7 +29,7 @@ const AddSiteModal = ({ children }) => {
   const { register, handleSubmit } = useForm();
   const onCreateSite = async ({ name, url }) => {
     await mutate(
-      '/api/sites',
+      auth.user ? ['/api/sites', auth.user.token] : null,
       createSite({
         authorId: auth.user.uid,
         createdAt: new Date().toISOString(),
@@ -38,7 +38,7 @@ const AddSiteModal = ({ children }) => {
       })
     );
     toast({
-      title: 'Account created.',
+      title: 'Site created.',
       description: "We've added your site.",
       status: 'success',
       duration: 5000,

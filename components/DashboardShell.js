@@ -8,8 +8,6 @@ import {
   BreadcrumbItem,
   BreadcrumbLink,
   Heading,
-  Box,
-  Text,
   Button,
 } from '@chakra-ui/react';
 import { ArrowRightIcon } from '@chakra-ui/icons';
@@ -35,11 +33,31 @@ const DashboardShell = ({ children }) => {
           justifyContent="flex-start"
         >
           <ArrowRightIcon overflow="visible" boxSize={6} />
-          <Link display="block">Sites</Link>
-          <Link>Feedback</Link>
+          <Link display="block" fontWeight="semibold">
+            Sites
+          </Link>
+          <Link fontWeight="semibold">Feedback</Link>
         </Stack>
         <Flex alignItems="center">
-          <Link mr={4}>Account</Link>
+          {!auth.user ? (
+            <Button
+              mr={4}
+              backgroundColor="white"
+              fontWeight="semibold"
+              onClick={(e) => auth.signinWithGithub()}
+            >
+              Sign In
+            </Button>
+          ) : (
+            <Button
+              mr={4}
+              backgroundColor="white"
+              fontWeight="semibold"
+              onClick={(e) => auth.signout()}
+            >
+              Sign Out
+            </Button>
+          )}
           <Avatar size="sm" src={auth.user?.photoUrl} />
         </Flex>
       </Flex>
