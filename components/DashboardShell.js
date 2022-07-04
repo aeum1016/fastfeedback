@@ -1,18 +1,8 @@
 import React from 'react';
-import {
-  Flex,
-  Link,
-  Stack,
-  Avatar,
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  Heading,
-  Button,
-} from '@chakra-ui/react';
+import NextLink from 'next/link';
+import { Flex, Link, Stack, Avatar, Button } from '@chakra-ui/react';
 import { ArrowRightIcon } from '@chakra-ui/icons';
 import { useAuth } from '@/lib/auth';
-import AddSiteModal from './AddSiteModal';
 
 const DashboardShell = ({ children }) => {
   const auth = useAuth();
@@ -32,36 +22,42 @@ const DashboardShell = ({ children }) => {
           alignItems="center"
           justifyContent="flex-start"
         >
-          <ArrowRightIcon overflow="visible" boxSize={6} />
-          <Link display="block" fontWeight="semibold">
-            Sites
-          </Link>
-          <Link fontWeight="semibold">Feedback</Link>
+          <NextLink href="/" passHref>
+            <ArrowRightIcon overflow="visible" boxSize={6} />
+          </NextLink>
+          <NextLink href="/dashboard" passHref>
+            <Link display="block" fontWeight="semibold">
+              Sites
+            </Link>
+          </NextLink>
+          <NextLink href="/feedback" passHref>
+            <Link fontWeight="semibold">Feedback</Link>
+          </NextLink>
         </Stack>
         <Flex alignItems="center">
           {!auth.user ? (
             <Button
-              mr={4}
-              backgroundColor="white"
+              variant="ghost"
+              mr={2}
               fontWeight="semibold"
-              onClick={(e) => auth.signinWithGithub()}
+              onClick={(e) => auth.signInWithGithub()}
             >
-              Sign In
+              Log In
             </Button>
           ) : (
             <Button
-              mr={4}
-              backgroundColor="white"
+              variant="ghost"
+              mr={2}
               fontWeight="semibold"
               onClick={(e) => auth.signout()}
             >
-              Sign Out
+              Log Out
             </Button>
           )}
           <Avatar size="sm" src={auth.user?.photoUrl} />
         </Flex>
       </Flex>
-      <Flex backgroundColor="gray.100" p={8} height="100vh">
+      <Flex backgroundColor="gray.100" p={8} minHeight="100vh" height="100%">
         <Flex
           margin="0 auto"
           flexDirection="column"
@@ -69,17 +65,6 @@ const DashboardShell = ({ children }) => {
           width="100%"
           px={8}
         >
-          <Breadcrumb>
-            <BreadcrumbItem isCurrentPage>
-              <BreadcrumbLink color="gray.700" fontSize="sm">
-                Sites
-              </BreadcrumbLink>
-            </BreadcrumbItem>
-          </Breadcrumb>
-          <Flex justifyContent="space-between">
-            <Heading mb={4}>My Sites</Heading>
-            <AddSiteModal>+ Add Site</AddSiteModal>
-          </Flex>
           {children}
         </Flex>
       </Flex>
