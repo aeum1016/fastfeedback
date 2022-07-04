@@ -1,7 +1,3 @@
-import Head from 'next/head';
-import { Button, Flex, Text, Code } from '@chakra-ui/react';
-import { ArrowRightIcon } from '@chakra-ui/icons';
-
 import { useAuth } from '../lib/auth';
 import EmptyState from '@/components/EmptyState';
 import SiteTableSkeleton from '@/components/SiteTableSkeleton';
@@ -9,6 +5,7 @@ import DashboardShell from '@/components/DashboardShell';
 import useSWR from 'swr';
 import fetcher from '@/utils/fetcher';
 import SiteTable from '@/components/SiteTable';
+import SiteTableHeader from '@/components/SiteTableHeader';
 
 export default function Dashboard() {
   const { user } = useAuth();
@@ -17,12 +14,14 @@ export default function Dashboard() {
   if (!data) {
     return (
       <DashboardShell>
+        <SiteTableHeader />
         <SiteTableSkeleton />
       </DashboardShell>
     );
   }
   return (
     <DashboardShell>
+      <SiteTableHeader />
       {data.sites ? <SiteTable sites={data.sites} /> : <EmptyState />}
     </DashboardShell>
   );
