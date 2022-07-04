@@ -32,8 +32,9 @@ export default function Home() {
 
       <ArrowRightIcon w={8} h={8} />
       <Text my={2} fontSize="md">
-        Fast Feedback was built as a part of React 2025 by Lee Robinson. It's an
-        easy way to add comments or reviews to your static site.
+        Fast Feedback was built as a part of React 2025 by Lee Robinson. The
+        site gives users an easy way to receive comments or reviews on their
+        static site.
       </Text>
       {!auth.user ? (
         <>
