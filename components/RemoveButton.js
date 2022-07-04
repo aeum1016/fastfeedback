@@ -49,7 +49,7 @@ const RemoveButton = ({ feedbackId }) => {
             </AlertDialogHeader>
 
             <AlertDialogBody>
-              Are you sure? You can't undo this action afterwards.
+              Are you sure? This action can not be undone.
             </AlertDialogBody>
 
             <AlertDialogFooter>
